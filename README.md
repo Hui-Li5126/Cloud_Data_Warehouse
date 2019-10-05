@@ -1,8 +1,8 @@
-Project Summary:
+# Project Summary:
     This project is to create a star schema Redshift database to falicity analytics team to perforam queries on song play analysis, currently raw data resides in S3 bucket on AWS. In order to do this, I create a new IAM role to allow Redshift clusters to call AWS services on my behalf, then attach a Amazon S3 read only access to the role and create a Redshift cluster, after proper security group setting I connect to the cluster, create two staging tables first then load the raw data into two staging tables using COPY command, once two staging tables are in place, then create one fact and four dimension tables by querying the two staging tables, since fact table is relatively big so it is sorted and distributed to four nodes, while other fact tables are small so they are sorted by primary key and distributed to every node to enable faster joins.
    
    
-Output files include:
+# Output files include:
     two staging tables: staging_events and staging_songs, they include all columns from the raw data in S3 bucket.
     one fact table: songplays
     four dimension tables: users, songs, artists, time
@@ -18,10 +18,10 @@ Output files include:
     time:          start_time, hour, day, week, month, year, weekday
     
 
-How to run the python scripts:
+# How to run the python scripts:
 First run sql_queries.py, then create_tables.py, then etl.py
 
-Python scripts:
+# Python scripts:
 sql_queries.py includes:
 1)drop table syntax in case it already exists, 
 2)create table scripts to create two staging tables, the four dimension tables and one fact table
